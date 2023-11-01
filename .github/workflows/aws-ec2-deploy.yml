@@ -1,4 +1,4 @@
-name: Publish Docker Image
+name: Deploy Docker image to AWS
 
 on:
   workflow_run:
