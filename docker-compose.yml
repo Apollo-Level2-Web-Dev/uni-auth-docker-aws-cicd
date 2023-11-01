@@ -1,0 +1,6 @@
+version: '3'
+services:
+  node-app:
+    image: 0nahid/uni-auth-docker-aws:latest
+    container_name: uni-auth-docker-aws
+    network_mode: 'host'
