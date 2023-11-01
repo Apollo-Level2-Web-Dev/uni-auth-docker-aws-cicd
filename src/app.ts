@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     errorMessages: [
       {
         path: '',
-        message: 'Hola Im running 123...'
+        message: 'We are next level developer'
       }
     ]
   });
