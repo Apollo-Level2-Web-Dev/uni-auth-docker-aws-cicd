@@ -1,33 +1,20 @@
-<div align="center">
-  <h1>University Management System</h1>
-</div>
-<div align="center">
-  <strong>Auth Service</strong>
-</div>
+Nginx Configuration
 
-## Development
-
-<br />
-
-Copy `.env.example` to `.env`
-
-```shell
-yarn dev
 ```
+server {
+ listen 80;
+ server_name auth.l2dev.xyz;
+ client_max_body_size 100m;  # Maximum request size limit
 
-## Documentation
+ location / {
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection "upgrade";
+  proxy_http_version 1.1;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header Host $host;
+  proxy_set_header Access-Controll-Allow-Origin "*";
+  proxy_pass http://localhost:5000;
+ }
+}
 
-- [**Postman Documentation**](https://documenter.getpostman.com/view/3910568/2s93ecvq6w)
-
-## License
-
-[MIT](LICENSE)
-
-npx husky add .husky/pre-commit "npx lint-staged"
-
-commit 2
-
-test change 1
-# uni-auth-docker-aws
-# uni-auth-docker-aws
-# uni-auth-docker-aws-cicd
+```
