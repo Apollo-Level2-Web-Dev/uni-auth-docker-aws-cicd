@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     errorMessages: [
       {
         path: '',
-        message: 'API not found !!!1234 Meow On main domain'
+        message: 'Hola Im running 123...'
       }
     ]
   });
