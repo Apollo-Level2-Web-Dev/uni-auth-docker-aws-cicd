@@ -1,0 +1,26 @@
+name: Publish Docker Image
+
+on:
+  workflow_run:
+    workflows: ['Publish Docker Image']
+    types: [completed]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Stop the old container
+        run: docker stop uni-auth-docker-aws-cicd || true
+
+      - name: Delete the old container
+        run: docker rm uni-auth-docker-aws-cicd || true
+
+      - name: Delete the old image
+        run: docker rmi ${{secrets.DOCKERHUB_USERNAME}}/uni-auth-docker-aws-cicd:latest || true
+
+      - name: Pull the image from dockerhub
+        run: docker pull ${{secrets.DOCKERHUB_USERNAME}}/uni-auth-docker-aws-cicd:latest
+
+      - name: Run the image
+        run: docker compose up -d
