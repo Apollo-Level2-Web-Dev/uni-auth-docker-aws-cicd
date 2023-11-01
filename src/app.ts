@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     errorMessages: [
       {
         path: '',
-        message: 'We are next level developer'
+        message: 'Hello from live server'
       }
     ]
   });
